@@ -8,14 +8,14 @@ public class BinarySearchExample {
     }
 
     public static Integer binarySearch(Integer[] array, Integer key) {
-        Integer left = 0;
-        Integer right = array.length - 1;
-        Integer middle = 0;
+        int left = 0;
+        int right = array.length - 1;
+        int middle = 0;
 
         while (left <= right) {
             middle = (right + left) / 2;
             Integer guess = array[middle];
-            if (key == guess) {
+            if (key.equals(guess)) {
                 return middle;
             }
             if (key < guess) {
@@ -23,7 +23,7 @@ public class BinarySearchExample {
             } else {
                 left = middle + 1;
             }
-        };
+        }
 
         return -1 * (middle + 1);
     }
