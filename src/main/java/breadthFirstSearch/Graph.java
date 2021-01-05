@@ -35,7 +35,7 @@ public class Graph {
     }
 
     public static boolean breadthFirstSearch(Graph graph, GraphNode start, GraphNode end){
-        ArrayList<GraphNode> checked = new ArrayList<>();
+        List<GraphNode> checked = new LinkedList<>();
         LinkedList<GraphNode> queue = new LinkedList<>(start.getLinks());
         while (queue.size() != 0){
             GraphNode tmp = queue.pollFirst();
