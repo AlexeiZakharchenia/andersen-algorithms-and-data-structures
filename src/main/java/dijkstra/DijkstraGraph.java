@@ -18,7 +18,7 @@ public class DijkstraGraph {
     }
 
     public static List<Integer> dijkstraAlgorithm(DijkstraGraph graph, DijkstraNode start, DijkstraNode end) {
-        List<DijkstraNode> processed = new ArrayList<>();
+        List<DijkstraNode> processed = new LinkedList<>();
         processed.add(start);
 
         Map<DijkstraNode, Integer> costs = new HashMap<>();
@@ -89,6 +89,6 @@ public class DijkstraGraph {
 
         DijkstraGraph graph = new DijkstraGraph();
         graph.setNodes(Arrays.asList(a, b, c, d, e, f));
-        System.out.println(dijkstraAlgorithm(graph, a, e));
+        System.out.println(dijkstraAlgorithm(graph, a, f));
     }
 }

@@ -31,7 +31,7 @@ public class Graph {
         d.setLinks(Arrays.asList(b,e,f));
         e.setLinks(Arrays.asList(c,f));
         Graph graph = new Graph(Arrays.asList(a,b,c,d,e,f,g,h));
-        System.out.println(breadthFirstSearch(graph, e, g));
+        System.out.println(breadthFirstSearch(graph, a, f));
     }
 
     public static boolean breadthFirstSearch(Graph graph, GraphNode start, GraphNode end){
