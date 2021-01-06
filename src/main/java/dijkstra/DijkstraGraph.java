@@ -1,5 +1,7 @@
 package dijkstra;
 
+import breadthFirstSearch.GraphNode;
+
 import java.util.*;
 
 public class DijkstraGraph {
@@ -52,18 +54,9 @@ public class DijkstraGraph {
             processed.add(node);
             entry = findMinDistanceEntry(costs, processed);
         }
-        LinkedList<Integer> results = new LinkedList<>();
-        DijkstraNode tmp = parents.get(end);
-        while (tmp != null) {
-            results.addFirst(tmp.getId());
-            tmp = parents.get(tmp);
-        }
-        if (results.size() > 0) {
-            results.addLast(end.getId());
-        }
-        return results;
-    }
 
+        return getResultFromParents(parents, end);
+    }
 
     public static Map.Entry<DijkstraNode, Integer> findMinDistanceEntry(Map<DijkstraNode, Integer> map,
                                                                         List<DijkstraNode> processed) {
@@ -75,6 +68,20 @@ public class DijkstraGraph {
         }
 
         return minDistanceEntry;
+    }
+
+    public static List<Integer> getResultFromParents(Map<DijkstraNode, DijkstraNode> parents, DijkstraNode end){
+        LinkedList<Integer> results = new LinkedList<>();
+        DijkstraNode tmp = parents.get(end);
+
+        while (tmp != null) {
+            results.addFirst(tmp.getId());
+            tmp = parents.get(tmp);
+        }
+        if (results.size() > 0) {
+            results.addLast(end.getId());
+        }
+        return results;
     }
 
     public static void main(String[] args) {
