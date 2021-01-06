@@ -58,14 +58,14 @@ public class DijkstraGraph {
 
     public static Map.Entry<DijkstraNode, Integer> findMinDistanceEntry(Map<DijkstraNode, Integer> map,
                                                                         List<DijkstraNode> processed) {
-        Map.Entry<DijkstraNode, Integer> min = null;
+        Map.Entry<DijkstraNode, Integer> minDistanceEntry = null;
         for (Map.Entry<DijkstraNode, Integer> entry : map.entrySet()) {
-            if ((min == null || (min.getValue() < entry.getValue())) && !processed.contains(entry.getKey())) {
-                min = entry;
+            if ((minDistanceEntry == null || (minDistanceEntry.getValue() < entry.getValue())) && !processed.contains(entry.getKey())) {
+                minDistanceEntry = entry;
             }
         }
 
-        return min;
+        return minDistanceEntry;
     }
 
     public static void main(String[] args) {
