@@ -17,7 +17,16 @@ public class DijkstraGraph {
         this.nodes = nodes;
     }
 
-    public static List<Integer> dijkstraAlgorithm(DijkstraGraph graph, DijkstraNode start, DijkstraNode end) {
+    public static List<Integer> dijkstraAlgorithm(DijkstraGraph graph, Integer startId, Integer endId) {
+        DijkstraNode start = graph.getNodes().stream()
+                            .filter(x-> x.getId().equals(startId)).findFirst().orElse(null);
+        DijkstraNode end = graph.getNodes().stream()
+                            .filter(x-> x.getId().equals(endId)).findFirst().orElse(null);
+
+        if (start == null || end == null) {
+            return new LinkedList<>();
+        }
+
         List<DijkstraNode> processed = new LinkedList<>();
         processed.add(start);
 
@@ -89,6 +98,6 @@ public class DijkstraGraph {
 
         DijkstraGraph graph = new DijkstraGraph();
         graph.setNodes(Arrays.asList(a, b, c, d, e, f));
-        System.out.println(dijkstraAlgorithm(graph, a, f));
+        System.out.println(dijkstraAlgorithm(graph, 1, 6));
     }
 }
