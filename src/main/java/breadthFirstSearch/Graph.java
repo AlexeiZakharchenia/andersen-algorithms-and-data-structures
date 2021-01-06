@@ -33,7 +33,7 @@ public class Graph {
         e.setLinks(Arrays.asList(c, f));
         g.setLinks(Collections.singletonList(s));
         Graph graph = new Graph(Arrays.asList(a, b, c, d, e, f, g, h, s));
-        System.out.println(breadthFirstSearch(graph, 4, 9));
+        System.out.println(breadthFirstSearch(graph, 5, 9));
     }
 
     public static List<Integer> breadthFirstSearch(Graph graph, int startId, int endId) {
@@ -71,11 +71,10 @@ public class Graph {
 
     public static List<Integer> getResultFromParents(Map<GraphNode, GraphNode> parents, GraphNode end){
         LinkedList<Integer> results = new LinkedList<>();
-        GraphNode tmp = parents.get(end);
+        GraphNode tmp = end;
 
-        while (tmp != null) {
+        while ((tmp = parents.get(tmp)) != null) {
             results.addFirst(tmp.getId());
-            tmp = parents.get(tmp);
         }
         if (results.size() > 0) {
             results.addLast(end.getId());

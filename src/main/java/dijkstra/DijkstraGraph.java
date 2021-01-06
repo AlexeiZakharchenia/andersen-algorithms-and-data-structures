@@ -72,11 +72,10 @@ public class DijkstraGraph {
 
     public static List<Integer> getResultFromParents(Map<DijkstraNode, DijkstraNode> parents, DijkstraNode end){
         LinkedList<Integer> results = new LinkedList<>();
-        DijkstraNode tmp = parents.get(end);
+        DijkstraNode tmp = end;
 
-        while (tmp != null) {
+        while ((tmp = parents.get(tmp)) != null) {
             results.addFirst(tmp.getId());
-            tmp = parents.get(tmp);
         }
         if (results.size() > 0) {
             results.addLast(end.getId());
